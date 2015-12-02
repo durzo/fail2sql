@@ -2,6 +2,30 @@
 Fail2SQL v1.0
 
 ============
+Introduction
+============
+Fail2SQL is called by Fail2Ban and logs information to a MySQL database including geographical location and total ban count.
+This information can then be used in reports, graphs or by third party programs to take further action such as permanent blocking, reporting to ISP etc..
+
+Fail2SQL is written in PHP and makes use of the MaxMind GeoIP PHP API.
+
+The following information is logged to MySQL:
+Name (from fail2ban)
+Protocol
+Port
+IP
+Count (total banned)
+Longitude
+Latitude
+Country Code
+Geo Data (city, country)
+
+Sample Output:
+[root@server fail2sql]# ./fail2sql -l
+HTTP(80/tcp): XXX.65.YYY.217 | Count: 6 | Geo: Lisboa, Portugal
+SSH(22/tcp): XXX.19.YYY.132 | Count: 20 | Geo: Perth, Australia
+
+============
 Installation
 ============
 
